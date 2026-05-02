@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ayangku Ayo Aku Pengen🥺</title>
+
+<style>
+    body {
+        margin: 0;
+        background: black;
+        overflow: hidden;
+        font-family: sans-serif;
+        touch-action: none;
+    }
+
+    .container {
+        position: relative;
+        width: 100vw;
+        height: 100vh;
+    }
+
+    .emoji {
+        position: absolute;
+        font-size: 64px;
+        user-select: none;
+    }
+
+    #finger {
+        left: 40px;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: grab;
+    }
+
+    #ok {
+        right: 80px;
+        top: 47.5%;
+        transform: translateY(-50%);
+    }
+
+    #water {
+        display: none;
+        position: absolute;
+        font-size: 40px;
+        animation: drop 0.6s ease forwards;
+    }
+
+    @keyframes drop {
+        0% { opacity: 0; transform: translateY(0); }
+        50% { opacity: 1; }
+        100% { transform: translateY(80px); opacity: 0; }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <div id="finger" class="emoji">👉</div>
+    <div id="ok" class="emoji">👌</div>
+    <div id="water" class="emoji">💦</div>
+</div>
+
+<script>
+const finger = document.getElementById("finger");
+const ok = document.getElementById("ok");
+const water = document.getElementById("water");
+
+let isDragging = false;
+
+function startDrag() {
+    isDragging = true;
+    finger.style.cursor = "grabbing";
+}
+
+function endDrag() {
+    isDragging = false;
+    finger.style.cursor = "grab";
+}
+
+document.addEventListener("mousemove", (e) => {
+    if (!isDragging) return;
+    moveFinger(e.clientX);
+});
+
+document.addEventListener("touchmove", (e) => {
+    if (!isDragging) return;
+    moveFinger(e.touches[0].clientX);
+});
+
+function moveFinger(x) {
+    const min = 40;
+    const max = window.innerWidth - 120;
+
+    let newX = Math.max(min, Math.min(x, max));
+    finger.style.left = newX + "px";
+
+    checkCollision();
+}
+
+finger.addEventListener("mousedown", startDrag);
+document.addEventListener("mouseup", endDrag);
+
+finger.addEventListener("touchstart", startDrag);
+document.addEventListener("touchend", endDrag);
+
+function checkCollision() {
+    const fRect = finger.getBoundingClientRect();
+    const oRect = ok.getBoundingClientRect();
+
+    if (
+        fRect.right >= oRect.left &&
+        fRect.left <= oRect.right &&
+        fRect.bottom >= oRect.top &&
+        fRect.top <= oRect.bottom
+    ) {
+        showWater();
+    }
+}
+
+function showWater() {
+    const oRect = ok.getBoundingClientRect();
+
+    water.style.display = "block";
+    water.style.left = (oRect.left + 20) + "px";
+    water.style.top = (oRect.top + 40) + "px";
+
+    water.style.animation = "none";
+    water.offsetHeight;
+    water.style.animation = "drop 0.6s ease forwards";
+}
+</script>
+
+</body>
+</html>
