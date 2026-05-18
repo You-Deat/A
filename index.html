@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DIZ FLYZE OFFICIAL</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --pr: #ff0050;
+      --sc: #00c851;
+      --bg: #0f0f0f;
+      --cd: #1e1e1e;
+      --tx: #ffffff;
+      --mu: #b3b3b3;
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{
+      font-family:"Poppins",sans-serif;
+      background:var(--bg);
+      color:var(--tx);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      min-height:100vh;
+      padding:20px;
+      position: relative;
+      overflow-x: hidden;
+      user-select:none;
+      -webkit-user-select:none;
+      -moz-user-select:none;
+      -ms-user-select:none;
+    }
+    img{
+      -webkit-user-drag:none;
+      -khtml-user-drag:none;
+      -moz-user-drag:none;
+      -o-user-drag:none;
+      user-drag:none;
+      pointer-events:none;
+    }
+    .nb {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(15, 15, 15, 0.9);
+      z-index: 1000;
+      border-bottom: 1px solid #333;
+    }
+    .nbb {
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--pr);
+    }
+    .hb {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+    .mo {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 70%;
+      height: 100%;
+      background: var(--cd);
+      z-index: 1001;
+      transition: right 0.3s ease;
+      padding: 20px;
+      box-shadow: -5px 0 15px rgba(0,0,0,0.5);
+    }
+    .mo.ac {
+      right: 0;
+    }
+    .mh {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid #333;
+    }
+    .mc {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+    .mi {
+      padding: 15px 0;
+      border-bottom: 1px solid #333;
+      cursor: pointer;
+    }
+    .mi:last-child {
+      border-bottom: none;
+    }
+    .im {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.9);
+      z-index: 1002;
+      display: none;
+      overflow-y: auto;
+      padding: 20px;
+    }
+    .im.ac {
+      display: block;
+    }
+    .ic {
+      background: var(--cd);
+      border-radius: 15px;
+      padding: 20px;
+      max-width: 600px;
+      margin: 50px auto;
+      position: relative;
+    }
+    .icl {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+    .il {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      border: 3px solid #fff;
+      object-fit: cover;
+      margin: 0 auto 20px;
+      display: block;
+    }
+    .is {
+      margin-bottom: 20px;
+      padding: 15px;
+      background: #2a2a2a;
+      border-radius: 10px;
+    }
+    .is h3 {
+      margin-bottom: 10px;
+      color: var(--pr);
+    }
+    .is pre {
+      background: #1e1e1e;
+      padding: 10px;
+      border-radius: 5px;
+      overflow-x: auto;
+      color: #FFC800;
+    }
+    #particles-js {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: 0;
+    }
+    .ct{
+      width:100%;
+      max-width:420px;
+      min-width: 300px;
+      text-align:center;
+      position: relative;
+      z-index: 1;
+      padding: 0 15px;
+      transition: transform 0.3s ease;
+      margin-top: 5px;
+    }
+    .lg{
+      width:90px;
+      height:90px;
+      border-radius:50%;
+      border:3px solid #fff;
+      object-fit:cover;
+      margin-bottom:10px;
+    }
+    .cd{
+      background:var(--cd);
+      border-radius:15px;
+      padding:25px 20px;
+      box-shadow:0 8px 20px rgba(0,0,0,.4);
+      border:1px solid #333;
+    }
+    .cd h2{
+      font-size:1.4rem;
+      margin-bottom:8px;
+    }
+    .cd p{
+      color:var(--mu);
+      font-size:.85rem;
+      margin-bottom:20px;
+      line-height: 1.4;
+    }
+    .bg{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+    .bt{
+      position:relative;
+      padding:12px 15px;
+      border:none;
+      border-radius:8px;
+      font-weight:600;
+      font-size:.9rem;
+      cursor:pointer;
+      display:flex;
+      align-items:center;
+      justify-content: flex-start;
+      gap:10px;
+      color:var(--tx);
+      overflow:hidden;
+      background:#2a2a2a;
+      padding-left: 20px;
+    }
+    .bt span,.bt i{
+      z-index:2;
+      position:relative;
+      white-space: nowrap;
+    }
+    .bt::after{
+      content:'';
+      position:absolute;
+      inset:0;
+      background:linear-gradient(90deg,rgba(0,0,0,0) 0%,rgba(0,0,0,0.9) 50%,rgba(0,0,0,0) 100%);
+      mask-image:linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 20%);
+      transform:translateX(-100%);
+      z-index:1;
+    }
+    .bt.rn::after{
+      animation:wv 2s linear infinite;
+    }
+    @keyframes wv{
+      0%{transform:translateX(-100%)}
+      100%{transform:translateX(100%)}
+    }
+    .pb{
+      height:6px;
+      background:#333;
+      border-radius:3px;
+      overflow:hidden;
+      margin-top: 5px;
+    }
+    .pf {
+      height: 100%;
+      width: 0;
+      background: linear-gradient(90deg, #000000, #FFC800, #000000);
+      background-size: 200% 100%;
+      background-position: 200% 0%;
+      animation: gm 1s linear infinite;
+      transition: width 0.5s ease;
+    }
+    @keyframes gm {
+      0% {
+        background-position: 200% 0%;
+      }
+      100% {
+        background-position: 0% 0%;
+      }
+    }
+    .dw {
+      margin-top: 5px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .db{
+      width:100%;
+      padding:10px 0;
+      border:none;
+      border-radius:50px;
+      font-weight:600;
+      font-size:.95rem;
+      cursor:pointer;
+      background:var(--pr);
+      color:#fff;
+    }
+    .db:disabled{background:#555;cursor:not-allowed}
+    @media (max-width: 400px) {
+      .lg {
+        width: 80px;
+        height: 80px;
+      }
+      .cd {
+        padding: 20px 15px;
+      }
+      .cd h2 {
+        font-size: 1.3rem;
+      }
+      .bt {
+        padding: 10px 12px;
+        font-size: .85rem;
+      }
+    }
+    @media (max-width: 350px) {
+      .lg {
+        width: 70px;
+        height: 70px;
+      }
+      .cd h2 {
+        font-size: 1.2rem;
+      }
+      .cd p {
+        font-size: .8rem;
+      }
+      .bt {
+        font-size: .8rem;
+      }
+    }
+    @media (orientation: landscape) and (max-height: 400px) {
+      .ct {
+        transform: scale(0.9);
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nb">
+    <div class="nbb">DIZFLYZE</div>
+    <button class="hb" id="HMB">
+      <i class="fas fa-bars"></i>
+    </button>
+  </nav>
+  <div class="mo" id="MOV">
+    <div class="mh">
+      <h3>INFORMASI</h3>
+      <button class="mc" id="MCL">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <div class="mi" id="CACT">Hubungi Admin</div>
+    <div class="mi" id="SACT">Saluran Admin</div>
+    <div class="mi" id="YACT">Youtube Admin</div>
+    <div class="mi" id="GACT">Channel Admin</div>
+  </div>
+  <div class="im" id="IMD">
+    <div class="ic">
+      <button class="icl" id="ICL"><i class="fas fa-times"></i></button>
+    </div>
+  </div>
+  <div id="particles-js"></div>
+  <div class="ct">
+    <img src="https://i.ibb.co/27QMWMDd/20250801-221959.jpg" alt="WAIT" class="lg"/>
+    <div class="cd">
+      <h2>DIZ FLYZE</h2>
+      <p>Lengkapi persyaratan di bawah ini agar anda bisa mendownload!</p>
+      <div class="bg">
+        <button class="bt" id="LBTN">
+          <i class="fas fa-thumbs-up"></i> <span>LIKE VIDEOKU DULU!</span>
+        </button>
+        <button class="bt" id="SBTN">
+          <i class="fas fa-bell"></i> <span>SUBSCRIBE DULU!</span>
+        </button>
+        <button class="bt" id="CBTN">
+          <i class="fas fa-comment-alt"></i> <span>COMMAND DULU!</span>
+        </button>
+        <button class="bt" id="GBTN">
+          <i class="fas fa-user-check"></i> <span>IKUTI SALURAN DULU!</span>
+        </button>
+        <button class="bt" id="GCTN">
+          <i class="fas fa-users"></i> <span>IKUTI CHANNEL DULU!</span>
+        </button>
+        <div class="pb">
+          <div class="pf" id="PFL"></div>
+        </div>
+        <div class="dw">
+          <button class="db" id="GSBT" disabled>DOWNLOAD</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script>
+    (function(){
+      document.addEventListener('contextmenu', e => e.preventDefault());
+      document.addEventListener('keydown', e => {
+        if (e.key === 'F12' ||
+            (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J')) ||
+            (e.ctrlKey && e.key === 'U') ||
+            (e.ctrlKey && e.key === 'S')) {
+          e.preventDefault();
+          return false;
+        }
+      });
+      let dO = false;
+      const th = 160;
+      setInterval(() => {
+        if (window.outerWidth - window.innerWidth > th ||
+            window.outerHeight - window.innerHeight > th) {
+          dO = true;
+        } else {
+          dO = false;
+        }
+      }, 500);
+    })();
+    particlesJS("particles-js", {
+      particles: {
+        number: { value: 80, density: { enable: true, value_area: 800 } },
+        color: { value: "#ffffff" },
+        shape: {
+          type: "circle",
+          stroke: { width: 0, color: "#000000" },
+          polygon: { nb_sides: 5 }
+        },
+        opacity: { value: 0.5, random: false },
+        size: { value: 3, random: true },
+        line_linked: { enable: true, distance: 150, color: "#ffffff", opacity: 0.4, width: 1 },
+        move: { enable: true, speed: 2, direction: "none", random: false, straight: false, out_mode: "out", bounce: false }
+      },
+      interactivity: {
+        detect_on: "canvas",
+        events: {
+          onhover: { enable: true, mode: "grab" },
+          onclick: { enable: true, mode: "push" },
+          resize: true
+        },
+        modes: {
+          grab: { distance: 140, line_linked: { opacity: 1 } },
+          bubble: { distance: 400, size: 40, duration: 2, opacity: 8, speed: 3 },
+          repulse: { distance: 200, duration: 0.4 },
+          push: { particles_nb: 4 },
+          remove: { particles_nb: 2 }
+        }
+      },
+      retina_detect: true
+    });
+    const HMB = document.getElementById('HMB');
+    const MOV = document.getElementById('MOV');
+    const MCL = document.getElementById('MCL');
+    const CACT = document.getElementById('CACT');
+    const SACT = document.getElementById('SACT');
+    const YACT = document.getElementById('YACT');
+    const GACT = document.getElementById('GACT');
+    const HTA = "https://t.me/ytdizflyze?text=Halo%20Admin,%20Saya%20ingin%20bertanya%20tentang%20Harga%20Join%20Murbans%20Atau%20Murunban%20Wa";
+    const TVS = "https://youtu.be/o6M4TdGjaIM?si=hYfIi80sfOPP1GMG";
+    const SWA = "https://whatsapp.com/channel/0029VbAyYSOBfxo7qS9WHj1E";
+    const YTL = "https://youtu.be/o6M4TdGjaIM?si=hYfIi80sfOPP1GMG";
+    const GCT = "https://t.me/iamdizflyze";
+    const GAS = "https://besargaji.com/oupKC";
+    HMB.addEventListener('click', () => {
+      MOV.classList.add('ac');
+    });
+    MCL.addEventListener('click', () => {
+      MOV.classList.remove('ac');
+    });
+    CACT.addEventListener('click', () => {
+      MOV.classList.remove('ac');
+      window.open(HTA, '_blank');
+    });
+    SACT.addEventListener('click', () => {
+      MOV.classList.remove('ac');
+      window.open(SWA, '_blank');
+    });
+    YACT.addEventListener('click', () => {
+      MOV.classList.remove('ac');
+      window.open(YTL, '_blank');
+    });
+    GACT.addEventListener('click', () => {
+      MOV.classList.remove('ac');
+      window.open(GCT, '_blank');
+    });
+    const ACT = { LBTN: false, SBTN: false, CBTN: false, GBTN: false, GCTN: false };
+    const TOT = Object.keys(ACT).length;
+    const PFL = document.getElementById("PFL");
+    const GB = document.getElementById("GSBT");
+    function UPD() {
+      const c = Object.values(ACT).filter(Boolean).length;
+      const p = (c / TOT) * 100;
+      PFL.style.width = `${p}%`;
+      GB.disabled = c < TOT;
+    }
+    document.getElementById("LBTN").addEventListener("click", () => {
+      if (ACT.LBTN) return;
+      ACT.LBTN = true;
+      document.getElementById("LBTN").classList.add("rn");
+      setTimeout(() => {
+        window.open(TVS, "_blank");
+        UPD();
+      }, 300);
+    });
+    document.getElementById("SBTN").addEventListener("click", () => {
+      if (ACT.SBTN) return;
+      ACT.SBTN = true;
+      document.getElementById("SBTN").classList.add("rn");
+      setTimeout(() => {
+        window.open(TVS, "_blank");
+        UPD();
+      }, 300);
+    });
+    document.getElementById("CBTN").addEventListener("click", () => {
+      if (ACT.CBTN) return;
+      ACT.CBTN = true;
+      document.getElementById("CBTN").classList.add("rn");
+      setTimeout(() => {
+        window.open(TVS, "_blank");
+        UPD();
+      }, 300);
+    });
+    document.getElementById("GBTN").addEventListener("click", () => {
+      if (ACT.GBTN) return;
+      ACT.GBTN = true;
+      document.getElementById("GBTN").classList.add("rn");
+      setTimeout(() => {
+        window.open(SWA, "_blank");
+        UPD();
+      }, 300);
+    });
+    document.getElementById("GCTN").addEventListener("click", () => {
+      if (ACT.GCTN) return;
+      ACT.GCTN = true;
+      document.getElementById("GCTN").classList.add("rn");
+      setTimeout(() => {
+        window.open(GCT, "_blank");
+        UPD();
+      }, 300);
+    });
+    GB.addEventListener("click", () => {
+      window.open(GAS, "_blank");
+    });
+  </script>
+</body>
+</html>
